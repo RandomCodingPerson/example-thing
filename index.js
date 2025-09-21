@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const sendGridUser = process.env.SENDGRID_USER
 const sender = process.env.GMAIL_SENDER;
 const recipient = process.env.EMAIL_RECIPIENT;
 
@@ -12,10 +13,12 @@ const nodemailer = require("nodemailer");
 console.log(sender, recipient, process.env.GOOGLE_PASSWORD, process.env)
 
 let client = nodemailer.createTransport({
-    service: "gmail",
+    host: "smtp.sendgrid.net",
+    port: 587,
+    secure: true,
     auth: {
-        user: sender,
-        pass: process.env.GOOGLE_PASSWORD,
+        user: sendGridUser,
+        pass: process.env.SENDGRID_KEY,
     },
 });
 
