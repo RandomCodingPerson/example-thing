@@ -1,6 +1,11 @@
 require('dotenv').config();
 
-const sendGridUser = process.env.SENDGRID_USER
+const sgMail = require('@sendgrid/mail')
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+
+const sender = process.env.GMAIL_SENDER;
+
+/*const sendGridUser = process.env.SENDGRID_USER
 const sender = process.env.GMAIL_SENDER;
 const recipient = process.env.EMAIL_RECIPIENT;
 
@@ -19,7 +24,7 @@ let client = nodemailer.createTransport({
         user: sendGridUser,
         pass: process.env.SENDGRID_KEY,
     },
-});
+});*/
 
 const app = express();
 app.use(bodyParser.json())
@@ -55,15 +60,24 @@ app.post("/mail", async (req, res) => {
             </div>
         `.split('\n').map(x=>x.trim()).join('')
     }
+
+    sgMail
+        .send(message)
+        .then((msg) => {
+            console.log("Sent!", msg);
+        })
+        .catch((error) => {
+            console.error(error);
+        })
     
-    try {
+    /*try {
         let response = await client.sendMail(message);
         res.send(response);
         console.log(response);
     } catch (err) {
         console.error(err);
         res.status(500).send("An error occurred");
-    }
+    }*/
 });
 
 app.listen(3000, () => {
