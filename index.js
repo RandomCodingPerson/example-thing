@@ -15,7 +15,6 @@ console.log(sender, recipient, process.env.GOOGLE_PASSWORD, process.env)
 let client = nodemailer.createTransport({
     host: "smtp.sendgrid.net",
     port: 587,
-    secure: true,
     auth: {
         user: sendGridUser,
         pass: process.env.SENDGRID_KEY,
