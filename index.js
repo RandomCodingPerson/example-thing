@@ -9,6 +9,8 @@ const cors = require('cors');
 
 const nodemailer = require("nodemailer");
 
+console.log(sender, recipient, process.env.GOOGLE_PASSWORD, process.env)
+
 let client = nodemailer.createTransport({
     service: "gmail",
     auth: {
