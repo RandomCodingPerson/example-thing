@@ -7,12 +7,12 @@ const sender = process.env.GMAIL_SENDER;
 
 /*const sendGridUser = process.env.SENDGRID_USER
 const sender = process.env.GMAIL_SENDER;
-const recipient = process.env.EMAIL_RECIPIENT;
+const recipient = process.env.EMAIL_RECIPIENT;*/
 
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require('cors');
-
+/*
 const nodemailer = require("nodemailer");
 
 console.log(sender, recipient, process.env.GOOGLE_PASSWORD, process.env)
