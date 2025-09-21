@@ -5,6 +5,7 @@ const recipient = process.env.EMAIL_RECIPIENT;
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require('cors');
 
 const nodemailer = require("nodemailer");
 
@@ -18,6 +19,7 @@ let client = nodemailer.createTransport({
 
 const app = express();
 app.use(bodyParser.json())
+app.use(cors());
 
 app.get("/", (req, res) => {
     res.send("Ready to mail!");
@@ -25,6 +27,7 @@ app.get("/", (req, res) => {
 
 app.post("/mail", async (req, res) => {
     console.log(req.body);
+
     var text = req.body.text
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
