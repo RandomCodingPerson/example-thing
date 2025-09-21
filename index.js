@@ -4,6 +4,7 @@ const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 const sender = process.env.GMAIL_SENDER;
+const recipient = process.env.EMAIL_RECIPIENT;
 
 /*const sendGridUser = process.env.SENDGRID_USER
 const sender = process.env.GMAIL_SENDER;
