@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/mail", async (req, res) => {
-
+    console.log(req.body);
     var text = req.body.text
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
